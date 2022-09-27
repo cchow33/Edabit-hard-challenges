@@ -1,0 +1,43 @@
+// You go to a jewelry shop and try to find the most expensive piece of jewelry. You write down the name of each piece of jewelry and its price.
+// Create a function that gets the name of the piece of jewelry with the highest price and returns "The most expensive one is the {name of jewelry piece}".
+
+
+// SOLUTION
+function mostExpensive(obj) {
+    let displayText = 'The most expensive one is the ' 
+    const prices = Object.values(obj) 
+    
+    const sorted = prices.sort(function(a,b){ return b-a}) 
+    const highest = sorted[0] 
+
+    const jewel = Object.keys(obj).find(key => obj[key] === highest) 
+    return displayText + `${jewel}` 
+}
+
+// REFACTOR
+function mostExpensive(obj) {
+    const sorted = Object.values(obj).sort(function(a,b){ return b-a})  
+    const jewel = Object.keys(obj).find(key => obj[key] === sorted[0]) 
+    return 'The most expensive one is the '  + `${jewel}`  
+}
+
+// REFACTOR 
+
+const mostExpensive = obj => {
+    const sorted = Object.values(obj).sort(function(a,b){ return b-a})  
+    const jewel = Object.keys(obj).find(key => obj[key] === sorted[0]) 
+    return 'The most expensive one is the '  + `${jewel}`  
+}
+
+
+console.log(mostExpensive ({
+    "Diamond Earrings": 980,
+    "Gold Watch": 250,
+    "Pearl Necklace": 4650
+  })) //  "The most expensive one is the Pearl Necklace"
+  
+console.log(mostExpensive({
+    "Silver Bracelet": 280,
+    "Gemstone Earrings": 180,
+    "Diamond Ring": 3500
+  })) // "The most expensive one is the Diamond Ring"
