@@ -1,0 +1,24 @@
+// Create a function to partition an array from left to right.
+
+function movingPartition(arr) {
+
+    const result = [];
+
+    for (let i = 1; i < arr.length; i++){
+
+        // Get left side of the partition:
+        arr.slice(0, i) 
+
+        // Get right side of the partition:
+        arr.slice(i) 
+
+        // push into result array
+        result.push([arr.slice(0,i), arr.slice(i)]) 
+    }
+
+    return result;
+}
+
+console.log(movingPartition([-1, -1, -1, -1])) // [[[-1], [-1, -1, -1]], [[-1, -1], [-1, -1]], [[-1, -1, -1], [-1]]]
+console.log(movingPartition([1, 2, 3, 4, 5])) // [[[1], [2, 3, 4, 5]], [[1, 2], [3, 4, 5]], [[1, 2, 3], [4, 5]], [[1, 2, 3, 4], [5]]]
+console.log(movingPartition([])) // []
